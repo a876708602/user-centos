@@ -22,6 +22,6 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>user-centoss</finalName>
+        <finalName>user-centos</finalName>
     </build>
 </project>
