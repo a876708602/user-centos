@@ -27,7 +27,7 @@ class TestMapperTest {
     @Test
     public void testSelect() {
         List<com.zjq.users.entity.Test> tests = testMapper.selectList(null);
-        tests.stream().forEach(System.out::println);
+        tests.forEach(System.out::println);
         System.out.println("--------------------------------");
     }
 
