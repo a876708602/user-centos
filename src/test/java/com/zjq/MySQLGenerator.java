@@ -31,6 +31,7 @@ public class MySQLGenerator {
 
 
     public static void main(String[] args) {
+        // 根据要生成的表修改
         String tableName = "test,test1";
 
         AutoGenerator generator = new AutoGenerator(DATA_SOURCE_CONFIG);
@@ -38,7 +39,7 @@ public class MySQLGenerator {
         // 全局配置
         GlobalConfig globalConfig = new GlobalConfig.Builder()
                 .outputDir("F:\\generator")
-                .author("zhangjianqi")
+                .author("张建起")
                 .enableSwagger()
                 .dateType(DateType.TIME_PACK)
                 .commentDate("yyyy-MM-dd")
