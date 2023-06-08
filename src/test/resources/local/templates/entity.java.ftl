@@ -3,20 +3,20 @@ package ${package.Entity};
 <#list table.importPackages as pkg>
 import ${pkg};
 </#list>
-
-import lombok.Getter;
-import lombok.Setter;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
 * <p>
-    * ${table.comment!}
-    * </p>
+* ${table.comment!}
+* </p>
 *
 * @author ${author}
 * @since ${date}
 */
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
 @TableName("${schemaName}${table.name}")
 public class ${entity} {
     private static final long serialVersionUID = 1L;
