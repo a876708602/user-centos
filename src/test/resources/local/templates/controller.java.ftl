@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
 * <p>
-    * ${table.comment!} api
-    * </p>
+* ${table.comment!} api
+* </p>
 *
 * @author ${author}
 * @since ${date}
