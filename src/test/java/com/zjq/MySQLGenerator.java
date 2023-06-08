@@ -31,6 +31,8 @@ public class MySQLGenerator {
 
 
     public static void main(String[] args) {
+        String tableName = "test,test1";
+
         AutoGenerator generator = new AutoGenerator(DATA_SOURCE_CONFIG);
 
         // 全局配置
@@ -72,6 +74,7 @@ public class MySQLGenerator {
         StrategyConfig strategyConfig = new StrategyConfig.Builder()
                 .addTablePrefix("t_", "c_")
                 .addFieldSuffix("_flag")
+                .addInclude(tableName)
                 .entityBuilder()
                 .enableFileOverride()
                 .controllerBuilder()
