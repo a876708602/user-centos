@@ -34,19 +34,12 @@ public class WebSecurityConfig {
                 .formLogin(formLogin ->
                         formLogin
                                 .loginPage("/login")
-                )
-                .oauth2Login(oauth2Login ->
-                        oauth2Login
-                                .loginPage("/login")
-                                .successHandler(authenticationSuccessHandler())
                 );
 
         return http.build();
     }
 
-    private AuthenticationSuccessHandler authenticationSuccessHandler() {
-        return new FederatedIdentityAuthenticationSuccessHandler();
-    }
+
 
     @Bean
     public UserDetailsService users() {

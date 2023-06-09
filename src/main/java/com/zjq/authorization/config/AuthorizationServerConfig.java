@@ -7,14 +7,10 @@ import com.nimbusds.jose.proc.SecurityContext;
 import com.zjq.authorization.jose.Jwks;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
-import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
@@ -34,8 +30,6 @@ import org.springframework.security.oauth2.server.authorization.settings.ClientS
 import org.springframework.security.oauth2.server.authorization.token.JwtEncodingContext;
 import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenCustomizer;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
-import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
 
 import java.util.UUID;
 
@@ -58,20 +52,31 @@ public class AuthorizationServerConfig {
         http.apply(authorizationServerConfigurer);
 
         authorizationServerConfigurer
-                .tokenGenerator(tokenGenerator)
-                .clientAuthentication(clientAuthentication -> { })
-                .authorizationEndpoint(authorizationEndpoint -> { })
-                .deviceAuthorizationEndpoint(deviceAuthorizationEndpoint -> { })
-                .deviceVerificationEndpoint(deviceVerificationEndpoint -> { })
-                .tokenEndpoint(tokenEndpoint -> { })
-                .tokenIntrospectionEndpoint(tokenIntrospectionEndpoint -> { })
-                .tokenRevocationEndpoint(tokenRevocationEndpoint -> { })
-                .authorizationServerMetadataEndpoint(authorizationServerMetadataEndpoint -> { })
+                .clientAuthentication(clientAuthentication -> {
+                })
+                .authorizationEndpoint(authorizationEndpoint -> {
+                })
+                .deviceAuthorizationEndpoint(deviceAuthorizationEndpoint -> {
+                })
+                .deviceVerificationEndpoint(deviceVerificationEndpoint -> {
+                })
+                .tokenEndpoint(tokenEndpoint -> {
+                })
+                .tokenIntrospectionEndpoint(tokenIntrospectionEndpoint -> {
+                })
+                .tokenRevocationEndpoint(tokenRevocationEndpoint -> {
+                })
+                .authorizationServerMetadataEndpoint(authorizationServerMetadataEndpoint -> {
+                })
                 .oidc(oidc -> oidc
-                        .providerConfigurationEndpoint(providerConfigurationEndpoint -> { })
-                        .logoutEndpoint(logoutEndpoint -> { })
-                        .userInfoEndpoint(userInfoEndpoint -> { })
-                        .clientRegistrationEndpoint(clientRegistrationEndpoint -> { })
+                        .providerConfigurationEndpoint(providerConfigurationEndpoint -> {
+                        })
+                        .logoutEndpoint(logoutEndpoint -> {
+                        })
+                        .userInfoEndpoint(userInfoEndpoint -> {
+                        })
+                        .clientRegistrationEndpoint(clientRegistrationEndpoint -> {
+                        })
                 );
 
         return http.build();
@@ -147,11 +152,6 @@ public class AuthorizationServerConfig {
     }
 
     @Bean
-    public OAuth2TokenCustomizer<JwtEncodingContext> idTokenCustomizer() {
-        return new FederatedIdentityIdTokenCustomizer();
-    }
-
-    @Bean
     public JWKSource<SecurityContext> jwkSource() {
         RSAKey rsaKey = Jwks.generateRsa();
         JWKSet jwkSet = new JWKSet(rsaKey);
@@ -165,6 +165,7 @@ public class AuthorizationServerConfig {
 
     /**
      * 配置授权服务器设置
+     *
      * @return
      */
     @Bean
@@ -174,7 +175,6 @@ public class AuthorizationServerConfig {
 
     @Bean
     public EmbeddedDatabase embeddedDatabase() {
-        // @formatter:off
         return new EmbeddedDatabaseBuilder()
                 .generateUniqueName(true)
                 .setType(EmbeddedDatabaseType.H2)
@@ -183,7 +183,6 @@ public class AuthorizationServerConfig {
                 .addScript("org/springframework/security/oauth2/server/authorization/oauth2-authorization-consent-schema.sql")
                 .addScript("org/springframework/security/oauth2/server/authorization/client/oauth2-registered-client-schema.sql")
                 .build();
-        // @formatter:on
     }
 
 }
