@@ -8,6 +8,6 @@ package ${package.Service};
 * @author ${author}
 * @since ${date}
 */
-public interface ${table.serviceName} {
+public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
 
 }
